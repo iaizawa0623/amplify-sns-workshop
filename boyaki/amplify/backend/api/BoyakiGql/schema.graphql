@@ -2,16 +2,16 @@ type Post
   @model (
     mutations: {create: "createPost", delete: "deletePost", update: null}
     timestamps: null
-    subscriptions: { level: public }
+    subscriptions: { level: public}
   )
   @auth(rules: [
     {allow: owner, ownerField:"owner", provider: userPools, operations:[read, create, delete]}
     {allow: private, provider: userPools, operations:[read]}
   ])
 {
-  type: String! # always set to 'post'. used in the SortByTimestamp GSI
+  type: String! @index(name:"SortByTimestamp", sortKeyFields: ["timestamp"], queryField: "listPostsSortedByTimestamp")
   id: ID
   content: String!
-  owner: String
+  owner: String @index(name:"BySpecificOwner", sortKeyFields: ["timestamp"], queryField: "listPostsBySpecificOwner")
   timestamp: Int!
 }
