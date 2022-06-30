@@ -20,6 +20,10 @@ const dict = {
     "Confirm Password": "パスワードを確認",
     "Email": "メールアドレス",
     "Reset your password": "パスワードをリセット",
+    "Enter your username": "登録したニックネーム",
+    "Send code": "コードを送信",
+    "Back to Sign In": "サインインに戻る",
+    "User already exists": "このニックネームは既に使われています"
   },
 };
 
